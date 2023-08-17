@@ -1,6 +1,9 @@
 package lib.steps;
 
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +18,11 @@ public abstract class BaseSteps {
 
     public BaseSteps(RemoteWebDriver driver) {
         this.driver = driver;
+    }
+
+    @Attachment(value = "Page screenshot", type = "image/png")
+    protected byte[] saveAllureScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     protected void waitForElementDisappeared(String locator) {

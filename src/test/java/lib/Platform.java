@@ -31,18 +31,18 @@ public class Platform {
     }
 
     public boolean isAndroid() {
-        return System.getenv("platformName").equals(ANDROID_PLATFORM_NAME);
+        return System.getProperty("platformName").equals(ANDROID_PLATFORM_NAME);
     }
 
     public boolean isIOS() {
-        return System.getenv("platformName").equals(IOS_PLATFORM_NAME);
+        return System.getProperty("platformName").equals(IOS_PLATFORM_NAME);
     }
     public boolean isMW() {
-        return System.getenv("platformName").equals(MW_PLATFORM_NAME);
+        return System.getProperty("platformName").equals(MW_PLATFORM_NAME);
     }
 
     public RemoteWebDriver getDriver() throws MalformedURLException {
-        String platformName = System.getenv("platformName");
+        String platformName = System.getProperty("platformName");
         switch (platformName) {
             case ANDROID_PLATFORM_NAME:
                 DesiredCapabilities androidCaps = new DesiredCapabilities();

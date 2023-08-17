@@ -11,7 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.HashMap;
+import java.util.Properties;
 
 public class BaseTest {
     protected RemoteWebDriver driver;
@@ -61,5 +63,17 @@ public class BaseTest {
     @AfterEach
     public void tearDown() {
         driver.quit();
+    }
+
+    private static void createAllureEnvironment(){
+        String path = System.getProperty("allure.results.directory");
+        try(FileOutputStream fos = new FileOutputStream(path + "/environment.properties")){
+            Properties properties = new Properties();
+            properties.setProperty("Environment", System.getenv("platformName"));
+            properties.store(fos, "my env file added");
+        } catch (Exception e){
+            System.err.println("error when allure env add");
+            e.printStackTrace();
+        }
     }
 }

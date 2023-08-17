@@ -15,6 +15,7 @@ public class MWMainPage extends MWBaseSteps implements MainPageInt {
     @Override
     public void skipOnboarding() {
         login("UserForAppium", "user111!");
+        saveAllureScreenshot();
     }
 
     private void login(String login, String password) {

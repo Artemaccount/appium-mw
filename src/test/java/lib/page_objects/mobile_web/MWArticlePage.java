@@ -19,18 +19,11 @@ public class MWArticlePage extends MWBaseSteps implements ArticlePageInt {
 
     @Override
     public void deleteArticleFromSaved(WebElement element) {
-//        WebElement deleteButton = element.findElements(By.xpath("//a[@type='button']")).get(0);
-//        WebElement deleteButton = element.findElement(By.xpath("//../following-sibling::a"));
         waitAndClickTo(element);
         waitForClickableAndClick("xpath://a[@id='ca-watch']");
         waitForElementTitleIsAdd("xpath://a[@id='ca-watch']");
         driver.navigate().back();
         driver.navigate().refresh();
-//        try {
-//            Thread.sleep(2_000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     @Override

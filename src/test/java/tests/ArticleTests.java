@@ -1,18 +1,26 @@
 package tests;
 
+import io.qameta.allure.*;
 import lib.page_objects.factories.AllPagesFactory;
 import lib.page_objects.interfaces.ArticlePageInt;
 import lib.page_objects.interfaces.MainPageInt;
 import lib.page_objects.interfaces.SearchPageInt;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+
+@Epic("Article tests")
 public class ArticleTests extends BaseTest {
 
     @Test
+    @Features(value = {@Feature("Article"), @Feature("MainPage"), @Feature("Search")})
+    @DisplayName("delete article success test")
+    @Description("adding two saved title, deletig one")
+    @Severity(value = SeverityLevel.BLOCKER)
     public void deleteArticleSuccessTest(){
         AllPagesFactory factory = new AllPagesFactory(driver);
         MainPageInt mainPage = factory.getMainPage();
